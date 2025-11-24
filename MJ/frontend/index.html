@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Speech-to-Speech Translation System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+    // Global protection against reloads and submissions
+    window.addEventListener("beforeunload", e => {
+        e.stopImmediatePropagation();  // stop any reload attempts
+        e.preventDefault();
+    });
+    window.onbeforeunload = null;
+
+    // prevent form submit / navigation globally
+    document.addEventListener("submit", e => {
+        e.preventDefault();
+        e.stopPropagation();
+    }, true);
+    </script>
+
+    <header>
+        <h1>🎧 Enhanced Speech-to-Speech Translation System</h1>
+        <p>AI-Powered Multi-Language Translation with Noise Cancellation & Accuracy Verification</p>
+    </header>
+
+    <main>
+        <form onsubmit="return false;">
+        <section class="container">
+            <!-- Input Section -->
+            <div class="card input-card">
+                <h2>🎙️ Input</h2>
+                <label>Source Language:</label>
+                <select id="sourceLang">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="bn">Bengali</option>
+                    <option value="mr">Marathi</option>                 
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ru">Russian</option>
+                    <option value="zh-cn">Chinese (Mandarin)</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                </select>
+
+
+                <textarea id="inputText" placeholder="Speak or type something..."></textarea>
+
+                <div class="btn-row">
+                    <button id="recordBtn"  type="button">🎤 Record Speech</button>
+                    <button id="translateBtn"  type="button">🟢 Translate</button>
+                </div>
+
+                <div class="noise-section">
+                    <p>🔇 Noise Cancellation</p>
+                    <div class="noise-bar"><div id="noiseLevel"></div></div>
+                    <span id="noiseStatus">Cleaned</span>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="card output-card">
+                <h2>🔊 Output</h2>
+                <label>Target Language:</label>
+                <select id="targetLang">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="bn">Bengali</option>
+                    <option value="mr">Marathi</option>                 
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ru">Russian</option>
+                    <option value="zh-cn">Chinese (Mandarin)</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                </select>
+
+
+                <textarea id="outputText" placeholder="Translated text will appear here..." readonly></textarea>
+
+
+                <button id="playBtn" type="button" class="play-btn">🔈 Play Audio</button>
+                <audio id="audioPlayer" controls style="display:none; width:100%; margin-top:10px;"></audio>
+
+                <div class="detect-card">
+                    <p>🌐 Multi-Language Detection</p>
+                    <div id="detectedLang">English</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accuracy Section -->
+        <section class="metrics">
+            <h3>📚 Translation Accuracy & Verification</h3>
+            <div class="grid">
+                <div class="metric-card">
+                    <h4>Translation Accuracy</h4>
+                    <div class="progress-bar"><div id="accuracyBar"></div></div>
+                    <p>Confidence Score: <span id="confidenceScore">99%</span></p>
+                    <p>BLEU Score: <span id="bleuScore">0.92</span></p>
+                </div>
+
+                <div class="metric-card">
+                    <h4>Performance Metrics</h4>
+                    <p>Processing Time: <span id="processingTime">0.44s</span></p>
+                    <p>Target Language: <span id="metricLang">Telugu</span></p>
+                    <p>Word Count: <span id="wordCount">4</span></p>
+                    <p>Character Count: <span id="charCount">17</span></p>
+                </div>
+
+                <div class="metric-card">
+                    <h4>Quality Verification</h4>
+                    <ul>
+                        <li>Grammar Check: ✅ <span id="grammarStatus">Passed</span></li>
+                        <li>Context Preservation: 🌟 <span id="contextStatus">Excellent</span></li>
+                        <li>Tone Matching: 🎯 <span id="toneStatus">Accurate</span></li>
+                        <li>Noise Reduction: 🔇 <span id="noiseApplied">Applied</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        </form>
+    </main>
+
+    <script src="js/speech.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
